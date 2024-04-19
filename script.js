@@ -71,11 +71,11 @@ btnHold.addEventListener('click', function(){
 
 
         // 2. Check if the total score is greater than 100
-        if (scores[currentPlayer] >= 100) {
+        if (scores[currentPlayer] >= 10) {
             // if so, current player wins
             console.log(`Player: ${currentPlayer} wins 🥳`);
-            document.querySelector(`player--${currentPlayer}`).classList.add('player-winner')
-            document.querySelector(`player--${currentPlayer}`).classList.remove('player-active')
+            document.querySelector(`.player--${currentPlayer}`).classList.add('player--winner')
+            document.querySelector(`.player--${currentPlayer}`).classList.remove('player--active')
             playing = false;
 
         } else{
@@ -86,6 +86,24 @@ btnHold.addEventListener('click', function(){
     }
 
 })
+
+// Reset the game functionality
+btnNew.addEventListener('click', function(){
+    player0El.classList.add('player--active');
+    player1El.classList.remove('player--active');
+    document.querySelector(`.player--${currentPlayer}`).classList.remove('player--winner');
+    scores[0] = 0;
+    scores[1] = 0;
+    currentScore = 0;
+    
+    currentPlayer = 0;
+    playing = true;
+    s0El.textContent = 0;
+    s1El.textContent = 0;
+    current0El.textContent = 0;
+    current1El.textContent = 0;
+})
+
 
 
 
