@@ -13,12 +13,28 @@ const btnNew = document.querySelector('.btn--new');
 const btnRoll = document.querySelector('.btn--roll');
 const btnHold = document.querySelector('.btn--hold');
 
-const scores = [0, 0];
-let currentScore = 0;
-let currentPlayer = 0;
-let playing = true;
+let scores, currentScore, currentPlayer, playing;
 
 // Repeated function
+const init = function(){
+    
+    scores = [0, 0];
+    currentScore = 0;
+    currentPlayer = 0;
+    playing = true;
+    s0El.textContent = 0;
+    s1El.textContent = 0;
+    current0El.textContent = 0;
+    current1El.textContent = 0;
+
+    player0El.classList.add('player--active');
+    player1El.classList.remove('player--active');
+    diceEl.classList.add('hidden');
+    player0El.classList.remove('player--winner');
+    player1El.classList.remove('player--winner');
+}
+
+
 const switchPlayer = function() {
     //switch to the other player and set the current score back to 0
     document.getElementById(`current--${currentPlayer}`).textContent = 0;
@@ -30,9 +46,7 @@ const switchPlayer = function() {
 
 
 // At the beginning of the game
-s0El.textContent = 0;
-s1El.textContent = 0;
-diceEl.classList.add('hidden');
+init();
 
 
 
@@ -89,19 +103,7 @@ btnHold.addEventListener('click', function(){
 
 // Reset the game functionality
 btnNew.addEventListener('click', function(){
-    player0El.classList.add('player--active');
-    player1El.classList.remove('player--active');
-    document.querySelector(`.player--${currentPlayer}`).classList.remove('player--winner');
-    scores[0] = 0;
-    scores[1] = 0;
-    currentScore = 0;
-    
-    currentPlayer = 0;
-    playing = true;
-    s0El.textContent = 0;
-    s1El.textContent = 0;
-    current0El.textContent = 0;
-    current1El.textContent = 0;
+    init();
 })
 
 
